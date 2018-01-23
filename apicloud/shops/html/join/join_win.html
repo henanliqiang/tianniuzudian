@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>天牛网电池租赁服务 线上签约</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/join.css">
+</head>
+
+<body>
+    <header class="aui-bar aui-bar-nav aui-bar-custom" id="aui-header">
+        <a class="aui-btn aui-pull-left" tapmode>
+            <!-- <span class="aui-iconfont aui-icon-left"></span> -->
+        </a>
+        <div class="aui-title">天牛网电池租赁服务 线上签约</div>
+    </header>
+</body>
+
+</html>
+<script type="text/javascript" src="../assets/js/api.js"></script>
+<script type="text/javascript" src="../assets/js/common.js"></script>
+<script>
+apiready = function() {
+    // 加载主体页面
+    apps.loadWinUrl('join_frm', 'join/join_frm.html');
+    // 后退键 - 安卓
+    // m.keyback = function() {
+    if (api.systemType == 'android') {
+        api.addEventListener({
+            name: 'keyback'
+        }, function(ret, err) {
+
+        });
+    }
+    // iOS手势关闭页面时
+    api.addEventListener({
+        name: 'viewdisappear'
+    }, function(ret, err) {
+        // 你的代码
+
+    });
+};
+</script>

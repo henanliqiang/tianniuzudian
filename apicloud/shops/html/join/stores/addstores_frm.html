@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>店铺信息</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/stores.css">
+    <style>
+    .imgfl_box {
+        height: 10rem;
+        background: #eee;
+        border: 1px solid #ccc;
+        border-radius: 0.2rem;
+        text-align: center;
+        line-height: 8rem;
+        font-size: 4rem;
+        color: #333;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="aui-content" id="addstores-frm" style="padding-bottom:3.5rem;" v-cloak>
+        <ul class="aui-list aui-list-noborder">
+            <div class="aui-title aui-padded-l-15 aui-padded-t-15 aui-margin-b-10">
+                <p>• 个人信息</p>
+            </div>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                        店主姓名
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="点击输入" v-model="shopselect.contactname">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                        联系方式
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input type="tel" placeholder="联系方式" v-model="shopselect.contactcellphone">
+                    </div>
+                </div>
+            </li>
+            <div class="aui-card-list aui-padded-b-15">
+                <div class="aui-card-list-header">
+                    个人身份证明
+                </div>
+                <div class="aui-card-list-content">
+                    <p class="aui-padded-l-15 aui-margin-b-10">(请提交身份证正面照)</p>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15" v-if="contactID_attach.length || shopselect.contactID ">
+                    <img :src="shopselect.contactID">
+                    <div class="aui-content-padded" @click="upimgattach('contactID')">
+                        <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm aui-margin-t-15">
+                            <span>更改个人身份证明</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15 imgfl_box" v-else @click="upimgattach('contactID')">
+                    <span> + </span>
+                </div>
+            </div>
+        </ul>
+        <ul class="aui-list aui-list-noborder aui-margin-t-15">
+            <div class="aui-title aui-padded-l-15 aui-margin-b-10">
+                <p>• 店铺信息</p>
+            </div>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                        店铺名称
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="点击输入" v-model="shopselect.name">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-label">
+                        所在城/区
+                    </div>
+                    <div class="aui-list-item-input" id='addressView'>
+                        <input type="text" placeholder="点击选择地址" class="aui-text-right" v-model="area" readonly="readonly">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-label">
+                        详细地址
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="点击输入" v-model="shopselect.address">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="aui-list aui-list-noborder aui-margin-t-15">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-label">
+                        经营范围
+                    </div>
+                    <div class="aui-list-item-input aui-text-right">
+                        <select v-model="shopselect.scopebusiness">
+                            <option v-for="option in options" v-bind:value="option.value">
+                                {{ option.text }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-label">
+                        开业时间
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input type="date" class="aui-text-right" v-model="shopselect.opentime" value="点击选择时间" style="margin-top: 18px;">
+                    </div>
+                </div>
+            </li>
+            <div class="aui-card-list aui-padded-b-15">
+                <div class="aui-card-list-header">
+                    营业执照
+                </div>
+                <div class="aui-card-list-content">
+                    <p class="aui-padded-l-15 aui-margin-b-10">(请提交营业执照照片)</p>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15" v-if="businesslicense_attach.length || shopselect.businesslicense">
+                    <img :src="shopselect.businesslicense">
+                    <div class="aui-content-padded" @click="upimgattach('businesslicense')">
+                        <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm aui-margin-t-15">
+                            <span>更改营业执照</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15 imgfl_box" v-else @click="upimgattach('businesslicense')">
+                    <span> + </span>
+                </div>
+            </div>
+        </ul>
+        <ul class="aui-list aui-list-noborder aui-margin-t-15">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner ">
+                    <div class="aui-list-item-label">
+                        经营面积
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input type="number" placeholder="点击输入" v-model="shopselect.operatarea" class="aui-pull-left" style="width: 70%;"><span class="aui-pull-right" style="line-height: 2.2rem;">平方米</span>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-card-list aui-padded-b-15">
+                <div class="aui-card-list-header">
+                    门头照片
+                </div>
+                <div class="aui-card-list-content">
+                    <p class="aui-padded-l-15 aui-margin-b-10">(请提交店铺含门头正面照片)</p>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15" v-if="photo_attach.length || shopselect.photo">
+                    <img :src="shopselect.photo">
+                    <div class="aui-content-padded" @click="upimgattach('photo')">
+                        <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm aui-margin-t-15">
+                            <span>更改门头照片</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15 imgfl_box" v-else @click="upimgattach('photo')">
+                    <span> + </span>
+                </div>
+            </li>
+        </ul>
+        <ul class="aui-list aui-list-noborder aui-margin-t-15">
+            <li class="aui-card-list aui-padded-b-15">
+                <div class="aui-card-list-header">
+                    店内照片
+                </div>
+                <div class="aui-card-list-content">
+                    <p class="aui-padded-l-15 aui-margin-b-10">(请提交店内实景照片 不超过4张)</p>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15" v-if="img_attach.length" v-for=" itemimg in img_attach">
+                    <img :src="itemimg.url">
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15" v-if="shopselect.img.length && img_attach.length==0" v-for="itemimg in shopselect.img">
+                   <img :src="itemimg.url">
+               </div>
+                <div class="aui-content-padded" v-if="img_attach.length || shopselect.img.length" @click="upimgattach('img')">
+                    <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm aui-margin-t-15">
+                        <span>更改店内照片</span>
+                    </div>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15 imgfl_box" v-else @click="upimgattach('img')">
+                    <span> + </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <footer class="aui-bar aui-bar-tab aui-padded-20" id="footer" onclick="saveBtn()">
+        <div class="aui-content-padded">
+            <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm">
+                <span class="aui-pull-left">•</span>提交<span class="aui-pull-right">•</span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script type="text/javascript" src="../../assets/js/api.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<script type="text/javascript" src="../../assets/js/vue.min.js"></script>
+<script type="text/javascript" src="js/addstores.js"></script>

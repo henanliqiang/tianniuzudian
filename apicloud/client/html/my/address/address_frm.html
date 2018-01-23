@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>收货地址</title>
+    <link rel="stylesheet" type="text/css"  href="../../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css"  href="../../assets/css/common.css">
+    <link rel="stylesheet" type="text/css"  href="css/address.css">
+</head>
+<body>
+<section class="aui-content">
+    <ul class="aui-list  aui-media-list">
+        <li class="aui-list-item">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-inner">
+                    <div class="aui-border-b aui-padded-b-10">
+                        <div class="aui-list-item-text">
+                            <div>河南省郑州市金水东路451号环球大厦一层B座 201室</div>
+                        </div>
+                        <div>
+                            <div>刘新飞    13911184711</div>
+                        </div>
+                    </div>
+                    <div class="aui-list-item-text aui-margin-t-10">
+                        <label><input class="aui-radio aui-margin-r-10" type="radio" name="radio" checked>默认收货地址</label>
+                        <div class="aui-pull-right aui-col-xs-4">
+                            <div class="aui-pull-left aui-col-xs-6">
+                                <img src="images/bj_03.png" style="width: 1.2rem;" class="aui-pull-left">编辑
+                            </div>
+                            <div class="aui-pull-right aui-col-xs-6">
+                                <img src="images/del_03.png" style="width: 1.2rem;" class="aui-pull-left">删除
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+<footer style="position: fixed;bottom:0;width: 100%;background: #f5f5f5;">
+    <div class="aui-content-padded">
+        <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm" onclick="jumpUrl.addaddress()">
+            <span class="aui-pull-left">•</span>添加收货地址<span class="aui-pull-right">•</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../../assets/js/api.js"></script>
+<script type="text/javascript" src="../../assets/js/zepto.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<script type="text/javascript" src="../../assets/js/vue.min.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        // 实现沉浸式效果
+        $api.fixStatusBar($api.dom("header"));
+    }
+</script>

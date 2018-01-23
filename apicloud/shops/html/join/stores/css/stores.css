@@ -1,0 +1,18 @@
+.aui-list{
+    background-color: #f5f5f5;
+}
+.aui-list .aui-list-item{
+    background-color: #fff;
+}
+::-webkit-input-placeholder {
+    text-align: right;
+}
+.aui-list .aui-list-item-input{
+    padding-right: 0;
+}
+.aui-list .aui-list-item-input input{
+    text-align: right;
+}
+.aui-card-list{
+    margin-bottom: 0rem;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>配货订单记录</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/distributions.css">
+</head>
+
+<body id="distributis-form" v-cloak>
+    <div class="aui-content">
+        <div class="aui-tab" id="tab">
+            <div class="aui-tab-item aui-active">增配订单</div>
+            <div class="aui-tab-item">减配订单</div>
+        </div>
+    </div>
+    <div class="aui-content" style="padding-bottom:3rem;">
+        <ul class="aui-list aui-margin-t-15" v-if="BatteryOrder_data.batteryOrderList.length<1">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="" style="line-height: 1rem;text-align: center;">
+                        暂无记录
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="aui-list aui-margin-t-15" v-else v-for="item in BatteryOrder_data.batteryOrderList">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title" style="line-height: 1rem;">
+                        <span v-text="item.pickno">TN25413314</span>
+                        <div class="aui-pull-right aui-margin-l-15">
+                            <span v-text="item.addtime">2017-08-21 12:00</span>
+                        </div>
+                    </div>
+                    <div class="aui-list-item-right">
+                        <span v-if="item.orderstate==0">等待配货</span>
+                        <span v-if="item.orderstate==1">已完成</span>
+                        <span v-if="item.orderstate==2">拒绝申请，订单取消</span>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title">
+                        <div class="aui-margin-10 grey" v-for="baterryitem in item.batteryList">
+                            <span v-text="baterryitem.name">6020锂电</span> * <span v-text="baterryitem.picknum">5</span> 组
+                        </div>
+                    </div>
+                    <div class="aui-list-item-right price">
+                        ￥ <span v-text="item.picktotal">17500.00</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="" style="height:30px;line-height: 30px;text-align: center;">
+            <span v-text="moredatatxt">暂无记录</span>
+        </div>
+        <!-- <ul class="aui-list aui-margin-t-15">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-title" style="line-height: 1rem;">
+                    TN25413314
+                    <div class="aui-pull-right aui-margin-l-15">2017-08-21 12:00</div>
+                </div>
+                <div class="aui-list-item-right">等待配货</div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-title">
+                    天能“7220”型锂电池组
+                </div>
+                <div class="aui-list-item-right price">￥17500.00</div>
+            </div>
+        </li>
+    </ul> -->
+    </div>
+</body>
+<script type="text/javascript" src="../../assets/js/api.js"></script>
+<script type="text/javascript" src="../../assets/js/zepto.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<script type="text/javascript" src="../../assets/js/vue.min.js"></script>
+<script type="text/javascript" src="../../assets/js/aui-slide.js"></script>
+<script type="text/javascript" src="../../assets/js/aui-tab.js"></script>
+<script type="text/javascript" src="js/distributions.js"></script>
+
+</html>

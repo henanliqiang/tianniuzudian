@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>店中已充满电的电池数量</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/insatall.css"> -->
+    <style type="text/css">
+    body {
+        /*background: transparent;*/
+        background: rgba(0, 0, 0, .60);
+        padding: 0;
+        margin: 0;
+        padding-top: 30px;
+    }
+
+    .info {
+        height: 100%;
+        width: 96%;
+        border-radius: 6px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 999;
+        /*background: none;*/
+    }
+
+    .icon-close {
+        width: 4rem;
+        height: 4rem;
+        color: #fff;
+        line-height: 4rem;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 2.5rem;
+        border: 1px solid #fff;
+        padding: 0.3rem;
+    }
+
+    .closeFrames {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="aui-content aui-padded-15 info" id="updatefullpower-frm">
+        <ul class="aui-list aui-media-list" style="border-radius: 0.5rem;position:relative;padding-bottom: 1rem;">
+            <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-text-center aui-font-size-18 aui-padded-15" style="font-weight: 700">店中已充满电的电池数量</div>
+            </li>
+            <div style="max-height:22rem;overflow-y:auto;">
+                <li class="aui-list-item aui-list-item-middle" v-for="item in batteryselect.batteryList">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media" style="width: 3rem;">
+                            <img src="images/dc_03.png" class="aui-img-round aui-list-img-sm">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title aui-font-size-14">
+                                    <span v-text="item.name">6020锂电</span>
+                                </div>
+                            </div>
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title aui-font-size-14">
+                                    <span class="price">已充满</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-list-item-right aui-margin-r-10">
+                            <div class="aui-bar aui-bar-btn aui-bar-btn-sm">
+                                <div class="aui-bar-btn-item aui-padded-t-5 aui-padded-b-5" tapmode v-on:click.stop="change_goods_num(0,$index)">
+                                    <i class="aui-iconfont aui-icon-minus"></i>
+                                </div>
+                                <div class="aui-bar-btn-item aui-padded-l-5 aui-padded-r-5" style="width:2%">
+                                    <input class="aui-input aui-text-center" type="number" v-model="item.fullpowernum" min="1" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" onfocus="if(this.value!=''){this.value=''}" onblur="if(this.value==''){this.value={{(item.fullpowernum)}}};if(this.value>={{(item.stocknum)}}){this.value={{(item.stocknum)}}};">
+                                </div>
+                                <div class="aui-bar-btn-item aui-padded-t-5 aui-padded-b-5" tapmode v-on:click.stop="change_goods_num(1,$index)">
+                                    <i class="aui-iconfont aui-icon-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <div class="aui-content-padded">
+                <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm" onclick="saveBtn()">
+                    <span class="aui-pull-left">•</span>确定修改<span class="aui-pull-right">•</span>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <div class="closeFrames" onclick="close_Winiframs()">
+        <i class="aui-iconfont aui-icon-close icon-close"></i>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="../assets/js/api.js"></script>
+<script type="text/javascript" src="../assets/js/zepto.min.js"></script>
+<script type="text/javascript" src="../assets/js/common.js"></script>
+<script type="text/javascript" src="../assets/js/vue.min.js"></script>
+<script type="text/javascript" src="js/updatefullpower.js"></script>

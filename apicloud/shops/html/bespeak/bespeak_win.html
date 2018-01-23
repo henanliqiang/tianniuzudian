@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>预约服务</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/bespeak.css">
+</head>
+
+<body>
+    <header class="aui-bar aui-bar-nav" id="aui-header">
+        <a class="aui-btn aui-pull-left" tapmode onclick="jumpUrl.login();">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+        <div class="aui-title">预约服务</div>
+    </header>
+    <div class="aui-content" id="bespeakshops-frm">
+        <div class="aui-tips" id="tips-1" onclick="jumpUrl.affiche()" v-if="selOneNotice">
+            <img src="images/tip-logo_03.png" style="width:1.5rem;">
+            <div class="aui-tips-title">
+                <span v-text="selOneNotice.title">您的店铺正在开展“预约服务返积分”活动</span>
+            </div>
+            <i class="aui-iconfont aui-icon-right" tapmode onclick="closeTips()"></i>
+        </div>
+        <h3 class="aui-text-center aui-margin-t-15">请到店客户出示预约二维码或验证码</h3>
+        <div class="aui-content aui-padded-15">
+            <ul class="aui-row aui-text-center block-tk">
+                <li class="aui-col-xs-6 aui-padded-15 item-img" id="openFNScannerBtn">
+                    <div class="aui-padded-15">
+                        <img src="images/sys_03.png">
+                        <div class="aui-margin-t-5">扫一扫</div>
+                    </div>
+                </li>
+                <li class="aui-col-xs-6 aui-padded-15 item-img" @click="identcodeBtn">
+                    <div class="aui-padded-15">
+                        <img src="images/yzm_03.png">
+                        <div class="aui-margin-t-5">验证码</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <h3 class="aui-text-center aui-margin-t-15">今日预约</h3>
+        <div class="aui-content">
+            <ul class="aui-row aui-text-center aui-padded-15">
+                <li class="aui-col-xs-4 aui-margin-t-15">
+                    <div class="flex-block" onclick="jumpUrl.record()">
+                        <img src="images/hd_07.png">
+                        <div class="aui-padded-t-15">
+                            <h1 class="aui-margin-t-15 tngreen" v-text="daystatistics.replaceCount">120</h1>
+                            <h4>换电</h4>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-col-xs-4 aui-margin-t-15">
+                    <div class="flex-block" style=" margin: 0 auto;" onclick="jumpUrl.record()">
+                        <img src="images/az_07.png">
+                        <div class="aui-padded-t-15">
+                            <h1 class="aui-margin-t-15 tngreen" v-text="daystatistics.installCount">120</h1>
+                            <h4>安装</h4>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-col-xs-4 aui-margin-t-15">
+                    <div class="aui-pull-right flex-block" onclick="jumpUrl.record()">
+                        <img src="images/tz_06.png">
+                        <div class="aui-padded-t-15">
+                            <h1 class="aui-margin-t-15 tngreen" v-text="daystatistics.returnCount">120</h1>
+                            <h4>退租</h4>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="../assets/js/api.js"></script>
+<script type="text/javascript" src="../assets/js/zepto.min.js"></script>
+<script type="text/javascript" src="../assets/js/common.js"></script>
+<script type="text/javascript" src="../assets/js/vue.min.js"></script>
+<script type="text/javascript" src="js/bespeak.js"></script>

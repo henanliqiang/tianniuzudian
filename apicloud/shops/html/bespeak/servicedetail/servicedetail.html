@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>预约服务详情</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/servicedetail.css">
+</head>
+
+<body>
+    <header class="aui-bar aui-bar-nav" id="aui-header">
+        <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+        <span class="aui-iconfont aui-icon-left"></span>
+    </a>
+        <div class="aui-title">预约服务详情</div>
+    </header>
+    <div class="aui-content" style="position: relative">
+        <div style="position: absolute;top:1rem; width: 100%;z-index: 9999;">
+            <img src="images/azyy-logo_03.png" style="width: 2.5rem;margin: 0 auto;">
+        </div>
+        <ul class="aui-list aui-list-noborder aui-margin-l-15 aui-margin-r-15 aui-margin-b-15" style="padding: 0.75rem 0.75rem 0; margin-top:2.3rem;border-radius: 1rem;">
+            <div class="aui-row aui-padded-15">
+                <h3 class="aui-text-center" style="width: 100%;">电池安装预约</h3>
+                <h4 class="aui-text-center" style="width: 100%;">预约编号：TN25414412</h4>
+            </div>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title">用户信息</div>
+                    <div class="aui-list-item-right">张明 13549684895</div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title">预约时间</div>
+                    <div class="aui-list-item-right">2017-08-21 12:00</div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title">预约门店</div>
+                    <div class="aui-list-item-right">天牛网合作店Z0038</div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title">预约状态</div>
+                    <div class="aui-list-item-right price">等待更换电池</div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title">电池型号</div>
+                    <div class="aui-list-item-right">天能“4812”型锂电池组</div>
+                </div>
+            </li>
+            <li class="aui-padded-t-15 aui-padded-b-15" style="display: none;">
+                <div class="aui-list-item-title">• 服务须知</div>
+                <div class="aui-padded-t-10 aui-padded-b-10">
+                    <p>• 请根据预约中电池型号为用户安装新电池</p>
+                    <p>• 完成安装后，点击“电池已安装”完成预约处理</p>
+                    <p>• 若当前可安装电池不足，请暂不要处理本预约</p>
+                </div>
+                <div class="aui-content-padded">
+                    <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm">
+                        <span class="aui-pull-left">•</span>电池已安装<span class="aui-pull-right">•</span>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-padded-t-15 aui-padded-b-15">
+                <div class="aui-list-item-title">• 服务须知</div>
+                <div class="aui-padded-t-10 aui-padded-b-10">
+                    <p>• 请协助客户更换同型号满电电池，并标记为“电池已更换”</p>
+                    <p>• 若电池型号与预约不符，请拒绝更换，并标记为“型号不符”</p>
+                    <p>• 若发现电池损坏，请拒绝更换，并标记为“电池已损坏”</p>
+                </div>
+                <div class="aui-padded-t-10 aui-padded-b-10 aui-row">
+                    <div class="aui-col-xs-4">
+                        <div class="aui-btn aui-btn-info btn-width aui-text-center">电池已更换</div>
+                    </div>
+                    <div class="aui-col-xs-4">
+                        <div class="aui-btn aui-btn-danger btn-width aui-text-center">型号不符</div>
+                    </div>
+                    <div class="aui-col-xs-4">
+                        <div class="aui-btn aui-btn-danger btn-width aui-text-center">电池损坏</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-padded-t-15 aui-padded-b-15">
+                <div class="aui-list-item-title">• 服务须知</div>
+                <div class="aui-padded-t-10 aui-padded-b-10">
+                    <p>• 请在确定电池无损坏且型号正确后，拆卸电池，并标记此订单为“电池已收回”</p>
+                    <p>• 若电池型号与订单不符，请拒绝回收，并标记“型号不符”</p>
+                    <p>• 若发现电池损坏，请拒绝回收，并标记“电池损坏”</p>
+                </div>
+                <div class="aui-padded-t-10 aui-padded-b-10 aui-row">
+                    <div class="aui-col-xs-4">
+                        <div class="aui-btn aui-btn-info btn-width aui-text-center">电池已收回</div>
+                    </div>
+                    <div class="aui-col-xs-4">
+                        <div class="aui-btn aui-btn-danger btn-width aui-text-center">型号不符</div>
+                    </div>
+                    <div class="aui-col-xs-4">
+                        <div class="aui-btn aui-btn-danger btn-width aui-text-center">电池损坏</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

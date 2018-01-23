@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>天牛网电池租赁服务 线上签约</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/join.css">
+</head>
+
+<body>
+    <div class="aui-content aui-padded-15 aui-padded-b-15" id="join-frm" v-cloak>
+        <div class="aui-margin-15">
+            <img src="images/logo_03.png" style="width: 4rem; margin:0 auto;">
+            <h3 class="aui-margin-t-15">
+                <span v-if="storeSetdata.auditstatus!==2">
+                注册成功！<br>
+                您还不是天牛网电池租赁网点服务商，请提交店铺信息并等待审核通过。</span>
+                <span v-if="storeSetdata.ispayfee === 0 && storeSetdata.auditstatus ===2">您已通过资质审核！<br>
+                请缴纳平台加盟费并签署线上合同，成为天牛网加盟网点。</span>
+                <span v-if="storeSetdata.ispayfee === 1 && storeSetdata.auditstatus ===2 && storeSetdata.issigntreaty ===0">您已支付加盟费用！<br>
+                请查看线上合作协议，完成签约。</span>
+                <span v-if="storeSetdata.issigntreaty ===1">
+                您已完成线上签约，天牛网将安排配货及服务支持。
+                网点上线后，请重新登录APP开启店铺经营管理功能。<br>
+                加盟网点服务专员电话：0371-25688888
+                </span>
+
+            </h3>
+        </div>
+        <div class="aui-content">
+            <ul class="aui-form-list aui-padded-15">
+                <li class="aui-padded-15 clearfix">
+                    <div class="clearfix block-flex">
+                        <div class="aui-pull-left aui-padded-15" style="width: 15%;">
+                            <div class="num-active"> 1</div>
+                        </div>
+                        <div class="aui-pull-left block-item-click" onclick="jumpUrl.addstores()" v-if="storeSetdata.auditstatus===''">
+                            <span>提交店铺信息</span>
+                        </div>
+                        <div class="aui-pull-left block-item-click" v-if="storeSetdata.auditstatus===0">
+                            <span>店铺信息 正在审核..</span>
+                        </div>
+                        <div class="aui-pull-left block-item-click" onclick="jumpUrl.addstores()" v-if="storeSetdata.auditstatus===1">
+                            <span>店铺信息 未通过审核</span>
+                        </div>
+                        <div class="aui-pull-left block-item-success" v-if="storeSetdata.auditstatus===2">
+                            <span>店铺信息 已通过审核</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-padded-15 clearfix">
+                    <div class="clearfix block-flex">
+                        <div class="aui-pull-left aui-padded-15" style="width: 15%;">
+                            <div class="num" v-if="storeSetdata.auditstatus !=2"> 2</div>
+                            <div class="num-active" v-else> 2</div>
+                        </div>
+                        <div class="aui-pull-left block-item" v-if="storeSetdata.auditstatus !=2">缴纳加盟费</div>
+                        <div class="aui-pull-left block-item-click" v-if="storeSetdata.ispayfee === 0 && storeSetdata.auditstatus ===2" onclick="jumpUrl.fee()">缴纳加盟费</div>
+                        <div class="aui-pull-left block-item-success" v-if="storeSetdata.ispayfee === 1 && storeSetdata.auditstatus ===2">成功缴纳加盟费</div>
+                    </div>
+                </li>
+                <li class="aui-padded-15 clearfix">
+                    <div class="clearfix block-flex">
+                        <div class="aui-pull-left aui-padded-15" style="width: 15%;">
+                            <div class="num" v-if="storeSetdata.ispayfee===0 || storeSetdata.ispayfee==''"> 3</div>
+                            <div class="num-active" v-else> 3</div>
+                        </div>
+                        <div class="aui-pull-left block-item" v-if="storeSetdata.ispayfee===0 || storeSetdata.ispayfee===''">签署线上合作协议</div>
+                        <div class="aui-pull-left block-item-click" onclick="jumpUrl.agreement()" v-if="storeSetdata.ispayfee === 1 && storeSetdata.auditstatus ===2 && storeSetdata.issigntreaty ===0">签署线上合作协议</div>
+                        <div class="aui-pull-left block-item-success" v-if="storeSetdata.issigntreaty ===1">签署线上合作协议</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="aui-padded-b-5 aui-content" @click="callus">
+            <div class="aui-content-padded">
+                <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm">
+                    <span class="aui-pull-left">•</span>咨询客服<span class="aui-pull-right">•</span>
+                </div>
+            </div>
+        </div>
+        <div class="aui-content">
+            <div class="aui-content-padded">
+                <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm" @click="loginOut">
+                    <span class="aui-pull-left">•</span>退出登录<span class="aui-pull-right">•</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="../assets/js/api.js"></script>
+<script type="text/javascript" src="../assets/js/zepto.min.js"></script>
+<script type="text/javascript" src="../assets/js/common.js"></script>
+<script type="text/javascript" src="../assets/js/vue.min.js"></script>
+<script type="text/javascript" src="js/join.js"></script>
+<script>
+</script>

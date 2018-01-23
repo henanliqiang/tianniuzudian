@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>我的</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/my.css">
+</head>
+
+<body id="mywin-frm">
+    <header class="aui-bar aui-bar-nav" id="aui-header">
+        <div class="aui-title">我的</div>
+    </header>
+    <!-- 顶部 -->
+    <div class="aui-content" style="margin-bottom: 2.5rem;">
+        <section class="aui-content my-bj aui-text-white" id="user-info">
+            <div class="block-img aui-margin-t-15" style="margin: 0 auto;width: 3rem;height:3rem;border-radius: 50%;border: 3px solid rgba(126,195,47,0.3);" onclick="jumpUrl.settings()">
+                <img :src="shopUserInfodata.headportrait?shopUserInfodata.headportrait:'images/tx_03.png'" style="width: 3rem;">
+            </div>
+            <h3 class="aui-text-center aui-margin-t-10" v-text="shopUserInfodata.name">小李快修 电动车服务店
+            </h3>
+            <h4 class="aui-text-center">(<span v-text="shopUserInfodata.no">Z0038</span>)</h4>
+        </section>
+        <section class="aui-content aui-grid aui-margin-b-15 aui-padded-15">
+            <ul class="aui-row">
+                <li class="aui-col-xs-4" onclick="jumpUrl.management()">
+                    <img src="images/dpgl_05.png" style="width:2.5rem;margin:0 auto;">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-t-10">店铺管理</div>
+                </li>
+                <li class="aui-col-xs-4" onclick="jumpUrl.record()">
+                    <img src="images/ddjl_05.png" style="width:2.5rem;margin:0 auto;">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-t-10">订单记录</div>
+                </li>
+                <li class="aui-col-xs-4" onclick="jumpUrl.wallet()">
+                    <img src="images/wdqb_05.png" style="width:2.5rem;margin:0 auto;">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-t-10">我的钱包</div>
+                </li>
+                <li class="aui-col-xs-4" onclick="jumpUrl.settings()">
+                    <img src="images/zhgl_05.png" style="width:2.5rem;margin:0 auto;">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-t-10">账号管理</div>
+                </li>
+                <li class="aui-col-xs-4" onclick="jumpUrl.myassociator()">
+                    <img src="images/wdhy_05.png" style="width:2.5rem;margin:0 auto;">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-t-10">我的会员</div>
+                </li>
+                <li class="aui-col-xs-4" onclick="jumpUrl.abouttianniu()">
+                    <img src="images/gytnw_05.png" style="width:2.5rem;margin:0 auto;">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-t-10">关于天牛网</div>
+                </li>
+                <li class="aui-col-xs-4" onclick="clear_cache()">
+                    <img src="images/lajixiang.png" style="width:2.5rem;margin:0 auto;">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-t-10">清空缓存</div>
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+<script type="text/javascript" src="../assets/js/api.js"></script>
+<script type="text/javascript" src="../assets/js/zepto.min.js"></script>
+<script type="text/javascript" src="../assets/js/common.js"></script>
+<script type="text/javascript" src="../assets/js/vue.min.js"></script>
+<script type="text/javascript" src="js/my_win.js"></script>
+
+</html>

@@ -1,0 +1,26 @@
+.my-bj{
+    background: url("../images/my_02.png") no-repeat;
+    background-size: 100% 100%;
+    width:100%;
+    height:8rem;
+}
+.aui-grid{
+    background-color: #f5f5f5;
+}
+.aui-row{
+    background-color: #fff;
+    border-radius: 1rem;
+}
+.aui-list{
+    background: none;
+}
+
+.aui-list.aui-list-in .aui-list-item {
+    background-image: none;
+}
+.text-white {
+    color: #ffffff !important;
+}
+.aui-grid [class*=aui-col-] {
+    padding: 0.75rem 0;
+}

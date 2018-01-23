@@ -1,0 +1,28 @@
+.aui-tips{
+    background-color: #f7dac7;
+    color: #ff6600;
+}
+.block-tk{
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 3px #eee;
+}
+.item-img img{
+    width: 3rem;
+    margin: 0 auto;
+}
+.flex-block{
+    width: 80%;
+    height: 5rem;
+    background: #fff;
+    position: relative;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 3px #eee;
+}
+.flex-block img{
+    width: 2rem;
+    position: absolute;
+    top:-1rem;
+    left:50%;
+    margin-left:-1rem;
+}

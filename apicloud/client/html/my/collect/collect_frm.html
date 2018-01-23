@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>商品收藏</title>
+    <link rel="stylesheet" type="text/css"  href="../../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css"  href="../../assets/css/common.css">
+    <link rel="stylesheet" type="text/css"  href="css/collect.css">
+</head>
+<body>
+<div class="aui-content">
+    <ul class="aui-list">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner aui-swipe-handle">
+                <ul class="aui-list aui-media-list">
+                    <li class="aui-list-item aui-list-item-middle" style="padding-left: 0;">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 6rem;">
+                                <img src="images/f1.jpg">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title aui-font-size-16">
+                                        绿能 B1233 家用电动车
+                                    </div>
+                                </div>
+                                <div class="aui-list-item-text price aui-font-size-18">
+                                    ￥450.00
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="aui-swipe-btn">
+                <div class="aui-btn aui-btn-danger">删除</div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript" src="../../assets/js/api.js"></script>
+<script type="text/javascript" src="../../assets/js/zepto.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<script type="text/javascript" src="../../assets/js/vue.min.js"></script>
+<script type="text/javascript" src="../../assets/js/aui-list-swipe.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        // 实现沉浸式效果
+        $api.fixStatusBar($api.dom("header"));
+    }
+    // alert(document.body.offsetHeight)
+    var swipe = new auiListSwipe(function(ret){
+        // console.log(ret)
+    });
+</script>
+</html>

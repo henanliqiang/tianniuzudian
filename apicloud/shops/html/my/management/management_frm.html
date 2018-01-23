@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>店铺信息</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/management.css">
+</head>
+
+<body>
+    <div class="aui-content" id="management-frm" style="padding-bottom:5rem;">
+        <ul class="aui-list aui-list-noborder">
+            <div class="aui-title aui-padded-l-15 aui-margin-b-10 aui-margin-t-10">• 个人信息</div>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                        签约周期
+                    </div>
+                    <div class="aui-list-item-right">
+                        <span v-text="shopselect.signtimebegin">2017-07-01</span> 至
+                        <span v-text="shopselect.signtimeend">2019-07-01</span>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                        营业开关
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input type="checkbox" class="aui-switch aui-pull-right" v-bind:false-value="1" v-bind:true-value="0" v-model="shopselect.businestatus">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label" style="width:15%">
+                        营业时间
+                    </div>
+                    <div class="aui-list-item-right" style="width:85%">
+                        <div class="aui-pull-left aui-padded-l-5 aui-padded-r-5" style="line-height:2rem">每天</div>
+                        <input type="time" class="aui-pull-left aui-margin-t-5 hxfinput" placeholder="点击选择时间" v-model="shopselect.businessbegin" value="08:00">
+                        <div class="aui-pull-left aui-padded-l-5 aui-padded-r-5" style="line-height:2rem">至</div>
+                        <input type="time" class="aui-pull-left aui-margin-t-5 hxfinput" placeholder="点击选择时间" v-model="shopselect.businessend" value="20:00">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="aui-list aui-list-noborder aui-margin-t-15">
+            <div class="aui-title aui-padded-l-15 aui-margin-b-10">• 店铺信息管理</div>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                        店铺编号
+                    </div>
+                    <div class="aui-list-item-right">
+                        <span v-text="shopselect.no">Z0038</span>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                        店铺名称
+                    </div>
+                    <div class="aui-list-item-right">
+                        <span v-text="shopselect.name">电动车服务店</span>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                        联系电话
+                    </div>
+                    <div class="aui-list-item-right">
+                        <span v-text="shopselect.contactcellphone">2556448</span>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                        店铺位置
+                    </div>
+                    <div class="aui-list-item-right">
+                        <span v-text="areaaddress">郑州市金水区B1173号</span>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label" style="width:15%">
+                        店铺简介
+                    </div>
+                    <div class="aui-list-item-right aui-padded-t-10 aui-padded-b-10" style="width:85%">
+                        <textarea style="border: 1px solid #f3f3f3;padding:10px;height:5rem;" placeholder="店铺简介" v-model="shopselect.comprofile">
+                        </textarea>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="aui-list aui-list-noborder aui-margin-t-15">
+            <li class="aui-card-list aui-padded-b-15">
+                <div class="aui-card-list-header">
+                    门头照片
+                </div>
+                <div class="aui-card-list-content">
+                    <p class="aui-padded-l-15 aui-margin-b-10">(请提交店铺含门头正面照片)</p>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15" v-if="photo_attach.length || shopselect.photo">
+                    <img :src="shopselect.photo">
+                    <div class="aui-content-padded" @click="upimgattach('photo')">
+                        <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm aui-margin-t-15">
+                            <span>更改门头照片</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15 imgfl_box" v-else @click="upimgattach('photo')">
+                    <span> + </span>
+                </div>
+            </li>
+            <li class="aui-card-list aui-padded-b-15">
+                <div class="aui-card-list-header">
+                    店内照片
+                </div>
+                <div class="aui-card-list-content">
+                    <p class="aui-padded-l-15 aui-margin-b-10">(请提交店内实景照片 不超过4张)</p>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15" v-if="img_attach.length" v-for=" itemimg in img_attach">
+                    <img :src="itemimg.url">
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15" v-if="shopselect.img.length && img_attach.length==0" v-for="itemimg in shopselect.img">
+                    <img :src="itemimg.url">
+                </div>
+                <div class="aui-content-padded" v-if="img_attach.length || shopselect.img.length" @click="upimgattach('img')">
+                    <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm aui-margin-t-15">
+                        <span>更改店内照片</span>
+                    </div>
+                </div>
+                <div class="aui-card-list-content-padded aui-margin-l-15 aui-margin-r-15 imgfl_box" v-else @click="upimgattach('img')">
+                    <span> + </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <footer class="aui-bar aui-bar-tab">
+        <div class="aui-padded-b-15">
+            <div class="aui-content-padded" onclick="saveBtn()">
+                <div class="aui-btn aui-btn-primary aui-btn-block aui-btn-sm">
+                    <span class="aui-pull-left">•</span>保存<span class="aui-pull-right">•</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="../../assets/js/api.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+<script type="text/javascript" src="../../assets/js/vue.min.js"></script>
+<script type="text/javascript" src="js/management.js"></script>
+
+</html>
